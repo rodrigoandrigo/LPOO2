@@ -62,16 +62,25 @@ class ctr {
         return false;
     }
 
-    public void IML() {
+    public void IML() {//imprime os elementos da lista
         ListaR pont = pr;
         while (pont != null) {
-            System.out.printf(pont.valor + "\n");
+            va += Integer.toString(pont.valor) + "-";
+            //System.out.printf(pont.valor + "\n");
             pont = pont.prox;
         }
+        JOptionPane.showMessageDialog(null, va);
+    }
+
+    public void IML2() {//imprime os elementos da lista tambem
+        for (ListaR pont = pr; pont != null; pont = pont.prox) {
+            va += Integer.toString(pont.valor) + "-";
+        }
+        JOptionPane.showMessageDialog(null, va);
 
     }
 
-    public int Posi(int valor) {
+    public int Posi(int valor) {//verifica se o elemento existe
         int tam = 0;//tamanho 2
         ListaR pont;
         for (pont = pr; pont != null && pont.valor != valor; pont = pont.prox) {
@@ -141,13 +150,17 @@ class ctr {
 class Exercicio1 {
 
     public static void main(String[] args) {
-        int quant, num;
+        int tam = 1;
         ctr c = new ctr();
-        quant = Integer.parseInt(JOptionPane.showInputDialog("escreva a quantidade de numeros que quer inserir"));
+        int inic = Integer.parseInt(JOptionPane.showInputDialog("escreva o primeiro elemento"));
+        c.adic(inic);
+        int quant = Integer.parseInt(JOptionPane.showInputDialog("escreva a quantidade de numeros que quer inserir"));
         for (int f = 1; f <= quant; f++) {
-            num = Integer.parseInt(JOptionPane.showInputDialog("escreva um numero"));
-            c.adic(num);
+            int num = Integer.parseInt(JOptionPane.showInputDialog("escreva um numero"));
+            c.adic(num, tam);
+            ++tam;
         }
+        c.IML();
 
     }
 
